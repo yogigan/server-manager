@@ -1,9 +1,9 @@
 server:
   port: 8080
-  servlet:
-    context-path: /api/v1/server-manager
 
 spring:
+  application:
+    name: server-manager
   profiles:
     active:
       - dev
@@ -12,12 +12,11 @@ spring:
   graphql:
     graphiql:
       enabled: true
-
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -27,8 +26,4 @@ spring:
     url: jdbc:postgresql://localhost:5432/db-server-manager
     username: postgres
     password: root
-
-  mvc:
-    path match:
-      matching-strategy: ant_path_matcher
 
