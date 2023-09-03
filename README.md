@@ -78,7 +78,7 @@ Retrieve a server by its ID.
 Request:
 ```graphql
 {
-  findServerById(id: 11) {
+  findServerById(id: 1) {
     id
     ipAddress
     name
@@ -140,7 +140,7 @@ Request:
 mutation {
   updateServer(
     server: {
-      id: 11
+      id: 1
       ipAddress: "127.0.0.1"
       name: "Local Server Update"
       memory: "32 GB"
@@ -164,7 +164,7 @@ Delete a server by ID.
 Request:
 ```graphql
 mutation {
-  deleteServer(id: 11)
+  deleteServer(id: 1)
 }
 ```
 
