@@ -1,0 +1,35 @@
+type Query {
+    findAllServers(page: Int, size: Int): [Server]
+    findServerById(id: ID!): Server
+    pingServer(ipAddress: String!): Server
+}
+
+type Mutation {
+    createServer(server: ServerInput!): Server
+    updateServer(server: ServerInput!): Server
+    deleteServer(id: ID!): Boolean
+    saveServers(servers: [ServerInput!]!): Boolean
+}
+
+type Server {
+    id: ID!
+    ipAddress: String!
+    name: String
+    memory: String
+    type: String
+    status: Status!
+}
+
+enum Status {
+    SERVER_UP
+    SERVER_DOWN
+}
+
+input ServerInput {
+    id: ID
+    ipAddress: String!
+    name: String
+    memory: String
+    type: String
+    status: Status!
+}
