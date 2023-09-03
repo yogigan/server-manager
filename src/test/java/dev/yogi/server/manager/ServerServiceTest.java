@@ -218,7 +218,7 @@ class ServerServiceTest {
         updatedServer.setIpAddress("192.168.1.1");
 
         when(serverRepository.findById(serverId)).thenReturn(Optional.of(existingServer));
-        when(serverRepository.findByIpAddress(updatedServer.getIpAddress())).thenReturn(Optional.empty());
+        when(serverRepository.findByIpAddressAndIdNot(updatedServer.getIpAddress(), updatedServer.getId())).thenReturn(Optional.empty());
         when(serverRepository.save(existingServer)).thenReturn(existingServer);
 
         Server result = serverService.update(updatedServer);
@@ -251,7 +251,7 @@ class ServerServiceTest {
         updatedServer.setIpAddress("127.0.0.2");
 
         when(serverRepository.findById(serverId)).thenReturn(Optional.of(existingServer));
-        when(serverRepository.findByIpAddress(updatedServer.getIpAddress())).thenReturn(Optional.of(existingServer));
+        when(serverRepository.findByIpAddressAndIdNot(updatedServer.getIpAddress(), updatedServer.getId())).thenReturn(Optional.of(existingServer));
 
         assertThrows(BadRequestException.class, () -> serverService.update(updatedServer));
     }
